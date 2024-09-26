@@ -1,13 +1,26 @@
 import React from "react"
-import "./App.css"
-import MyContainer from "./layout/MyContainer"
-import Login from "./components/Login"
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import MyContainer from "./layout/MyContainer";
+import Header from "./components/Header";
+import Login from "./components/NewLogin";
+import Home from "./components/Home";
+import About from "./components/About";
 
 function App() {
+
+  const aboutName = "Kolmas komponent"
+
   return (
-    <MyContainer>
-      <Login />
-    </MyContainer>
+    <Router>
+      <MyContainer>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/about" element={<About name={aboutName} />} />
+        </Routes>
+      </MyContainer>
+    </Router>
   )
 }
 
